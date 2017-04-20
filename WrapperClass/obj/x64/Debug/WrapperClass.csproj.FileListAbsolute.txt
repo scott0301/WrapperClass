@@ -1,0 +1,13 @@
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\bin\x64\Debug\WrapperClass.dll
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\bin\x64\Debug\WrapperClass.pdb
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\bin\x64\Debug\EPPlus.dll
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\bin\x64\Debug\NPOI.dll
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\obj\x64\Debug\WrapperClass.csprojResolveAssemblyReference.cache
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\obj\x64\Debug\WrapperClass.dll
+C:\Users\SCOTT\Desktop\Development\WrapperClass\WrapperClass\obj\x64\Debug\WrapperClass.pdb
+D:\Develope\WrapperClass\WrapperClass\bin\x64\Debug\WrapperClass.dll
+D:\Develope\WrapperClass\WrapperClass\bin\x64\Debug\WrapperClass.pdb
+D:\Develope\WrapperClass\WrapperClass\bin\x64\Debug\EPPlus.dll
+D:\Develope\WrapperClass\WrapperClass\bin\x64\Debug\NPOI.dll
+D:\Develope\WrapperClass\WrapperClass\obj\x64\Debug\WrapperClass.dll
+D:\Develope\WrapperClass\WrapperClass\obj\x64\Debug\WrapperClass.pdb
