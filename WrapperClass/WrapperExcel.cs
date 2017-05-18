@@ -162,6 +162,8 @@ namespace Wrapper
             process.StartInfo.FileName = strFilePath;
             process.Start();
         }
+
+        // 이거 쓰레기네..
         public void DistillByDelivery(List<string[]> listdelivery, int ndeliveryIndex, int nPriceIndex)
         {
             for( int i = 0; i < listdelivery.Count; i++ )
