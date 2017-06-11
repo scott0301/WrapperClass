@@ -83,6 +83,28 @@ namespace Wrapper
             string date = string.Format("20{0}-{1}-{2}", year, month, day);
             return date;
         }
+        /// <summary> 170522
+        /// Program Elapsed Time Calculation --> 시:분:초
+        /// </summary>
+        /// <param name="dtStart"></param>
+        /// <param name="dtTarget"></param>
+        /// <returns></returns>
+        public static string TIME_Get_Substracted_Time(DateTime dtStart, DateTime dtTarget)
+        {
+            TimeSpan ts = dtTarget.Subtract(dtStart);
+
+            int nDay = ts.Days;
+            int nHour = ts.Hours;
+            int nMin = ts.Minutes;
+            int nSec = ts.Seconds;
+
+
+            nHour = nHour + (nDay * 24);
+
+            return string.Format("{0:00}:{1:00}:{2:00}", nHour, nMin, nSec);
+        }
+
+        // Get Different Days
         public static int GetPeriod(DateTime DtStart, DateTime dtEnd)
         {
             TimeSpan ts = dtEnd.Subtract(DtStart);
@@ -90,6 +112,7 @@ namespace Wrapper
 
             return nPeriod;
         }
+        // Get Different Hours
         public static int GetDiffHour(DateTime DtStart, DateTime dtEnd)
         {
             TimeSpan ts = dtEnd.Subtract(DtStart);
@@ -97,6 +120,7 @@ namespace Wrapper
 
             return nDiff;
         }
+        // Get Different Mins
         public static int GetDiffMin(DateTime DtStart, DateTime dtEnd)
         {
             TimeSpan ts = dtEnd.Subtract(DtStart);
@@ -104,6 +128,7 @@ namespace Wrapper
 
             return nDiff;
         }
+
         public static int GetDiffAbsoluteMin(DateTime DtStart, DateTime dtEnd)
         {
             TimeSpan ts = dtEnd.Subtract(DtStart);

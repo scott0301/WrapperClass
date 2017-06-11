@@ -74,6 +74,7 @@
     <Compile Include="WrapperDateTime.cs" />
     <Compile Include="WrapperExcel.cs" />
     <Compile Include="WrapperFiles.cs" />
+    <Compile Include="WrapperINI.cs" />
     <Compile Include="WrapperLog.cs" />
     <Compile Include="WrapperLV.cs" />
     <Compile Include="WrapperMessagebox.cs" />
