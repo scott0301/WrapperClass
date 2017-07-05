@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WRAPPER_CLASS
+namespace WrapperUnion
 {
 
     /// <summary>
@@ -80,7 +80,7 @@ namespace WRAPPER_CLASS
     /// <summary>
     /// An easy to use, managed class to create, read, write, and modify INI files.
     /// </summary>
-    public class Ini
+    public class WrapperINI
     {
 
         string strMainPath = string.Empty;
@@ -103,7 +103,7 @@ namespace WRAPPER_CLASS
         /// <summary>
         /// Creates a new INI class.
         /// </summary>
-        public Ini()
+        public WrapperINI()
         {
             Items = new Dictionary<string, List<Item>>();
             

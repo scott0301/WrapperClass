@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Wrapper
+namespace WrapperUnion
 {
     public static class WrapperFile
     {

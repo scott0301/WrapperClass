@@ -11,7 +11,8 @@ using System.IO;
 using System.Threading;
 
 using System.Diagnostics;
-namespace Wrapper
+
+namespace WrapperUnion
 {
     public static class WrapperSystemInfo
     {

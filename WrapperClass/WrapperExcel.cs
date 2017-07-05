@@ -12,7 +12,7 @@ using OfficeOpenXml.Drawing;
 using NPOI.HSSF.Model; // InternalWorkbook
 using NPOI.HSSF.UserModel; // HSSFWorkbook, HSSFSheet
 
-namespace Wrapper
+namespace WrapperUnion
 {
     public class WrapperExcel
     {

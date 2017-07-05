@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace Wrapper
+namespace WrapperUnion
 {
     public class WrapperString
     {

@@ -9,7 +9,7 @@ using System.Windows.Forms; // for printDialog
 using System.Drawing.Printing; // for printDocument 
 using System.Drawing;
 
-namespace Wrapper
+namespace WrapperUnion
 {
     public class WrapperPrinter
     {

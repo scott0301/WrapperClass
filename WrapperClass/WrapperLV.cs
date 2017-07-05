@@ -8,7 +8,7 @@ using System.Collections;
 
 using System.Windows.Forms;
 
-namespace Wrapper
+namespace WrapperUnion
 {
     public static class WrapperLV
     {
