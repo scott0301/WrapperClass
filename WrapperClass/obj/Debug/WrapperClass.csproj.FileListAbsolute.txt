@@ -21,8 +21,8 @@ C:\Users\khkang\Desktop\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperClas
 C:\Users\khkang\Desktop\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperClass.pdb
 D:\Develope\WrapperClass\WrapperClass\DLL\WrapperClass.dll
 D:\Develope\WrapperClass\WrapperClass\DLL\WrapperClass.pdb
-D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperClass.csprojResolveAssemblyReference.cache
 D:\Develope\Library\WrapperUnion.dll
 D:\Develope\Library\WrapperUnion.pdb
 D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperUnion.dll
 D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperUnion.pdb
+D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperClass.csprojResolveAssemblyReference.cache

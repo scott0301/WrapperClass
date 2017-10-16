@@ -73,6 +73,7 @@
     <Compile Include="UIThread.cs" />
     <Compile Include="WrapperColorString.cs" />
     <Compile Include="WrapperCSV.cs" />
+    <Compile Include="WrapperDataGrid.cs" />
     <Compile Include="WrapperDataStructure.cs" />
     <Compile Include="WrapperDateTime.cs" />
     <Compile Include="WrapperExcel.cs" />

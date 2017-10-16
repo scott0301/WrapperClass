@@ -10,58 +10,128 @@ namespace WrapperUnion
 {
     public class WrapperDateTime
     {
-        public static DateTime GetTimeEliminatedDatime(DateTime dtTime)
-        {
-            DateTime dtNew = new DateTime(dtTime.Year, dtTime.Month, dtTime.Day, 0, 0, 0);
-            return dtNew;
-        }
-        public static string GetTodayString()
-        {
-            return DateTime.Now.ToShortDateString();    
-        }
-        public static DateTime GetTodayDatetime()
-        {
-            DateTime dtNow = DateTime.Now;
-            DateTime dtToday = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 0, 0, 0);
+        //**************************************************************************************
+        #region TIMECODE_FOR_SAVE
 
-            return dtToday;
-        }
-        public static string GetTimeCode()
-        {
-            string strTime = string.Format("{0:00}-{1:00}|{2:00}:{3:00}:{4:00}", DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            return strTime;
-        }
-        public  static string GetTimeCode4Save()
+        public static string GetTimeCode4Save_MM_DD_HH_MM_SS()
         {
             string strTime = string.Format("{0:00}_{1:00}_{2:00}{3:00}{4:00}", DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
             return strTime;
         }
-        public static string GetTimeCodeYMD_HMS()
+        public static string GetTimeCode4Save_MM_DD_HHMMSS()
+        {
+            DateTime curr = DateTime.Now;
+            string strTime = string.Format("{0:00}_{1:00}_{2:00}{3:00}{4:00}", curr.Month, curr.Day, curr.Hour, curr.Minute, curr.Second);
+            return strTime;
+        }
+        public static string GetTimeCode4Save_HH_MM_SS_MMM()
+        {
+            DateTime curr = DateTime.Now;
+            return string.Format("{0:00}_{1:00}_{2:00}_{3:000}", curr.Hour, curr.Minute, curr.Second, curr.Millisecond);
+
+        }
+        public static string GetTImeCode4Save_YYYY_MM_DD_HH_MM_SS_MMM()
+        {
+            DateTime curr = DateTime.Now;
+            return string.Format("{0:0000}_{1:00}_{2:00}_{3:00}_{4:00}_{5:00}_{6:000}", curr.Year, curr.Month, curr.Day, curr.Hour, curr.Minute, curr.Second, curr.Millisecond);
+        }
+        public static DateTime Conv_TimeCode_2_DateTime_YYYY_MM_DD_HH_MM_SS_MMM(string strDate)
+        {
+            strDate = strDate.Replace("-", "");
+            int year = Convert.ToInt32(strDate.Substring(0, 4));
+            int month = Convert.ToInt32(strDate.Substring(4, 2));
+            int day = Convert.ToInt32(strDate.Substring(6, 2));
+            int hour = Convert.ToInt32(strDate.Substring(8, 2));
+            int min = Convert.ToInt32(strDate.Substring(10, 2));
+            int sec = Convert.ToInt16(strDate.Substring(12, 2));
+            int msec = Convert.ToInt16(strDate.Substring(14, 3));
+
+            return new DateTime(year, month, day, hour, min, sec, msec);
+        }
+        public static string GetTimeCode4Save_YYYY_MM_DD()
+        {
+            DateTime t = DateTime.Now;
+            return string.Format("{0:0000}_{1:00}_{2:00}", t.Year, t.Month, t.Day);
+        }
+        public static DateTime Conv_TimeCode_2_DateTime_YYYY_MM_DD(string strDate)
+        {
+            strDate = strDate.Replace("-", "");
+            int year = Convert.ToInt32(strDate.Substring(0, 4));
+            int month = Convert.ToInt32(strDate.Substring(4, 2));
+            int day = Convert.ToInt16(strDate.Substring(6, 2));
+
+            return new DateTime(year, month, day);
+        }
+        
+        #endregion
+        //**************************************************************************************
+
+
+        //**************************************************************************************
+        #region TIME CODE
+        public static string GetTimeCode_MM_DD_HHMMSS()
+        {
+            string strTime = string.Format("{0:00}-{1:00}|{2:00}:{3:00}:{4:00}", DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            return strTime;
+        }
+        public static string Conv_DateTime_2_TimeCode_YYMMDD_HHMMSS(DateTime dt)
+        {
+            string strTime = string.Format("{0:00}{1:00}{2:00}_{3:00}{4:00}{5:00}", dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second);
+            strTime = strTime.Remove(0, 2);
+            return strTime;
+        }
+        
+        
+        public static string TIME_GetTImeCode_YYYY_MM_DD()
+        {
+            DateTime curr = DateTime.Now;
+            string strTime = string.Format("[{0:0000}-{1:00}-{2:00}]", curr.Year, curr.Month, curr.Day);
+            return strTime;
+        }
+        public static string TIME_GetTimeCode_MMDD_HHMMSS_MMM()
+        {
+            DateTime curr = DateTime.Now;
+            string strTime = string.Format("[{0:00}{1:00}_{2:00}:{3:00}:{4:00}_{5:00}]", curr.Month, curr.Day, curr.Hour, curr.Minute, curr.Second, curr.Millisecond);
+            return strTime;
+        }
+
+        public static string GetTimeCode_YYYYMMDD_HHMMSS()
+        {
+            string strTime = string.Format("{0:0000}{1:00}{2:00}_{3:00}{4:00}{5:00}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            return strTime;
+        }
+        public static string GetTimeCode_YYMMDD_HHMNSS()
         {
             string strTime = string.Format("{0:00}{1:00}{2:00}_{3:00}{4:00}{5:00}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
             strTime = strTime.Remove(0, 2);
             return strTime;
         }
-        public static string GetTimeCode_YMD()
+        public static string GetTimeCode_YYMMDD()
         {
             string strTime = string.Format("{0:00}{1:00}{2:00}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             strTime = strTime.Remove(0, 2);
             return strTime;
 
         }
-        public static string GetTimeCode_HMS()
+        public static string GetTimeCode_HHMMSS()
         {
             DateTime dtCurTime = DateTime.Now;
             return string.Format("{0:00}:{1:00}:{2:00}", dtCurTime.Hour, dtCurTime.Minute, dtCurTime.Second);
         }
-        public static string GetTimeCode_HMS(DateTime dt)
+        public static string GetTimeCode_HHMMSS(DateTime dt)
         {
             return string.Format("{0:00}:{1:00}:{2:00}", dt.Hour, dt.Minute, dt.Second);
         }
-        public static string GetTimeCode_HMS(TimeSpan ts)
+        public static string GetTimeCode_HHMMSS(TimeSpan ts)
         {
             return string.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
         }
+
+        #endregion
+        //**************************************************************************************
+
+
+      
         public static void GetWeekList(DateTime startDate, DateTime EndDate)
         {
             TimeSpan ts = EndDate.Subtract(startDate);
@@ -75,15 +145,24 @@ namespace WrapperUnion
                 listWeek.Add(startDate.DayOfWeek.ToString());
             }
         }
-        public static string Conv_DateCode2Date(string datecode)
-        {
-            string year = string.Concat(datecode[0], datecode[1]);
-            string month = string.Concat(datecode[2], datecode[3]);
-            string day = string.Concat(datecode[4], datecode[5]);
 
-            string date = string.Format("20{0}-{1}-{2}", year, month, day);
-            return date;
+        public static DateTime GetTimeEliminatedDatime(DateTime dtTime)
+        {
+            DateTime dtNew = new DateTime(dtTime.Year, dtTime.Month, dtTime.Day, 0, 0, 0);
+            return dtNew;
         }
+        public static string GetTodayString()
+        {
+            return DateTime.Now.ToShortDateString();
+        }
+        public static DateTime GetTodayDatetime()
+        {
+            DateTime dtNow = DateTime.Now;
+            DateTime dtToday = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 0, 0, 0);
+
+            return dtToday;
+        }
+       
         /// <summary> 170522
         /// Program Elapsed Time Calculation --> 시:분:초
         /// </summary>
@@ -179,41 +258,7 @@ namespace WrapperUnion
             return WeekCount;
         }
 
-        public static string Conv_DateTimeTo_YMD_HMS(DateTime dt)
-        {
-            string strTime = string.Format("{0:00}{1:00}{2:00}_{3:00}{4:00}{5:00}", dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second);
-            strTime = strTime.Remove(0, 2);
-            return strTime;
-        }
-        public static string Conv_YMD(DateTime dt)
-        {
-            string s = string.Format("{0:00}-{1:00}-{2:00}", dt.Year, dt.Month, dt.Day);
-            return s;
-        }
-        public static DateTime Conv_YMD_HMSToDateTime(string strTimeCode )
-        {
-            DateTime dt = DateTime.Now;
-
-            try
-            {
-                string[] parse = strTimeCode.Split('_');
-
-                string year = "20" + parse[0].Substring(0, 2);
-                string month = parse[0].Substring(2, 2);
-                string day = parse[0].Substring(4, 2);
-                string hour = parse[1].Substring(0, 2);
-                string min = parse[1].Substring(2, 2);
-                string sec = parse[1].Substring(4, 2);
-                
-                dt = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), Convert.ToInt32(hour), Convert.ToInt32(min), Convert.ToInt32(sec));
-            }
-            catch(Exception ex)
-            {
-                string s = ex.ToString();
-            }
-            
-            return dt;
-        }
+    
         public static string GetBuildInfo()
         {
             string strinfo = System.Reflection.Assembly.GetExecutingAssembly().GetName().FullName;
