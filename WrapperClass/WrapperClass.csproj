@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>Library\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\NPOI.dll</HintPath>
@@ -86,6 +89,7 @@
     <Compile Include="WrapperPrinter.cs" />
     <Compile Include="WrapperString.cs" />
     <Compile Include="WrapperSystemInfo.cs" />
+    <Compile Include="WrapperZip.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

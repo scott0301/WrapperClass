@@ -69,6 +69,59 @@ namespace WrapperUnion
 
         //**************************************************************************************
         #region TIME CODE
+        public static string GetTactCode_HH_MM_SS(double fSec)
+        {
+            int nHour = Convert.ToInt32(fSec / 3600);
+            int nMin  = Convert.ToInt32((fSec - nHour) / 60);
+            int nSec  = Convert.ToInt32((fSec - nHour) % 60);
+
+            string strTime = string.Format("{0:00}:{1:00}:{2:00}", nHour, nMin, nSec);
+            return strTime;
+        }
+        public static string GetTactCode_DD_HH_MM_SS(double fTotalSec)
+        {
+            int nDay = 0;
+            int nHour = 0;
+            int nMin = 0;
+            int nSec = 0;
+
+            string strTime = string.Empty;
+
+            const double SEC_DAY = 86400.0;
+            const double SEC_HOUR = 3600.0;
+            const double SEC_MIN = 60.0;
+            
+            // if exceed days unit
+            if (fTotalSec >= SEC_DAY)
+            {
+                nDay = Convert.ToInt32( Math.Floor(fTotalSec / SEC_DAY));
+                fTotalSec -= nDay * SEC_DAY;
+
+                nHour = Convert.ToInt32(Math.Floor(fTotalSec / SEC_HOUR));
+                fTotalSec -= nHour * SEC_HOUR;
+
+                nMin = Convert.ToInt32( Math.Floor(fTotalSec  / SEC_MIN));
+                fTotalSec -= nMin * SEC_MIN;
+
+                nSec = Convert.ToInt32(fTotalSec % 60);
+                strTime = string.Format("{0:00}|{1:00}:{2:00}:{3:00}", nDay, nHour, nMin, nSec);
+            }
+            else
+            {
+                nHour = Convert.ToInt32( Math.Floor(fTotalSec / SEC_HOUR));
+                fTotalSec -= nHour * SEC_HOUR;
+
+                nMin = Convert.ToInt32( Math.Floor(fTotalSec / SEC_MIN));
+                fTotalSec -=  nMin * SEC_MIN;
+
+                nSec = Convert.ToInt32(fTotalSec % 60);
+                strTime = string.Format("{0:00}:{1:00}:{2:00}", nHour, nMin, nSec);
+
+            }
+
+
+            return strTime;
+        }
         public static string GetTimeCode_MM_DD_HHMMSS()
         {
             string strTime = string.Format("{0:00}-{1:00}|{2:00}:{3:00}:{4:00}", DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
@@ -208,7 +261,20 @@ namespace WrapperUnion
 
             return nDiff;
         }
+        public static int GetDiffSec(DateTime DtStart, DateTime dtEnd)
+        {
+            TimeSpan ts = dtEnd.Subtract(DtStart);
+            int nDiff = Convert.ToInt32(ts.Seconds);
 
+            return nDiff;
+        }
+        public static int GetDiffTotalSec(DateTime DtStart, DateTime dtEnd)
+        {
+            TimeSpan ts = dtEnd.Subtract(DtStart);
+            int nDiff = Convert.ToInt32(ts.TotalSeconds);
+
+            return nDiff;
+        }
         public static int GetDiffAbsoluteMin(DateTime DtStart, DateTime dtEnd)
         {
             TimeSpan ts = dtEnd.Subtract(DtStart);
@@ -219,6 +285,19 @@ namespace WrapperUnion
 
             int nAbsoluteMinDiff = (nDiffDay * 24 * 60) + (nDiffHour * 60) + nDiffMin;
             return nAbsoluteMinDiff;
+        }
+
+        public static string GetPeriodTime_HH_MM_SS(DateTime dtStart, DateTime dtEnd)
+        {
+            TimeSpan ts = dtEnd.Subtract(dtStart);
+
+            int nDiffDay = Convert.ToInt32(ts.Days);
+            int nDiffHour = Convert.ToInt32(ts.Hours);
+            int nDiffMin = Convert.ToInt32(ts.Minutes);
+            int nDiffSec = Convert.ToInt32(ts.Seconds);
+
+            string time = string.Format("{0:00}:{1:00}:{2:00}", nDiffDay * 24 + nDiffHour, nDiffMin, nDiffSec);
+            return time;
         }
         public static int GetDiffDay(DateTime DtStart, DateTime DtEnd)
         {

@@ -24,36 +24,7 @@ namespace WrapperUnion
         {
 
         }
-       //public int SELECTED_COL
-       //{
-       //    get 
-       //    {
-       //        DataGridViewSelectedColumnCollection col = m_dgView.SelectedColumns;
-       //
-       //        int nIndex = -1;
-       //
-       //        if (col.Count != 0)
-       //        {
-       //            nIndex = m_dgView.Columns.IndexOf(col[0]);
-       //        }
-       //        return nIndex;
-       //    }
-       //}
-       //public int SELECTED_ROW
-       //{
-       //    get
-       //    {
-       //        DataGridViewSelectedRowCollection row = m_dgView.SelectedRows;
-       //
-       //        int nIndex = -1;
-       //
-       //        if (row.Count != 0)
-       //        {
-       //            nIndex = m_dgView.Rows.IndexOf(row[0]);
-       //        }
-       //        return nIndex;
-       //    }
-       //}
+      
 
 
         public void SetControl(DataGridView view)
@@ -258,14 +229,21 @@ namespace WrapperUnion
         {
             if (list.Count != 0)
             {
-                string[] header = list.ElementAt(0);
+                int nMaxCols = 0;
 
-                int nCols = header.Length;
+                for (int x = 0; x < list.Count; x++)
+                {
+                    if (list.ElementAt(0).Length >= nMaxCols)
+                    {
+                        nMaxCols = list.ElementAt(x).Length;
+                    }
+                }
+
                 int nRows = list.Count;
 
                 Clear();
 
-                m_dgView.ColumnCount = nCols;
+                m_dgView.ColumnCount = nMaxCols;
 
                 for (int y = 0; y < nRows; y++)
                 {

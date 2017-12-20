@@ -65,13 +65,11 @@ namespace WrapperUnion
     }
     public class CsvFileReader : StreamReader
     {
-        public CsvFileReader(Stream stream)
-            : base(stream)
+         public CsvFileReader(Stream stream): base(stream)
         {
         }
 
-        public CsvFileReader(string filename)
-            : base(filename)
+        public CsvFileReader(string filename): base(filename)
         {
         }
 
@@ -251,25 +249,43 @@ namespace WrapperUnion
             return m_list.ToList();
         }
 
-        public void ReadCSVFile(string strPath)
+        public bool ReadCSVFile(string strPath, out string msg)
         {
+            bool bSucess = true;
+            msg = string.Empty;
+
             RemoveAll();
 
-            using (CsvFileReader reader = new CsvFileReader(strPath))
+            try
             {
-                CsvRow row = new CsvRow();
-
-                List<string> listRow = new List<string>();
-                while (reader.ReadRow(row))
+                using (CsvFileReader reader = new CsvFileReader(strPath))
                 {
-                    foreach (string s in row)
-                    {
-                        listRow.Add(s);
-                    }
+                    CsvRow row = new CsvRow();
 
-                    AddData(listRow.ToArray());
+                    List<string> listRow = new List<string>();
+                    while (reader.ReadRow(row))
+                    {
+                        foreach (string s in row)
+                        {
+                            listRow.Add(s);
+                        }
+
+                        AddData(listRow.ToArray());
+                        listRow.Clear();
+                    }
                 }
             }
+            catch (IOException ex)
+            {
+                msg = ex.ToString();
+                bSucess = false;
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+                bSucess = false;
+            }
+            return bSucess;
         }
         public void SaveCSVFile(string strPath, List<string[]> list)
         {
@@ -283,9 +299,17 @@ namespace WrapperUnion
 
                     string[] temp = list.ElementAt(i);
 
-                    for (int j = 0; j < COL; j++)
+                    for (int j = 0; j < temp.Length; j++)
                     {
                         row.Add(temp[j]);
+                    }
+
+                    if (temp.Length < COL)
+                    {
+                        for (int j = temp.Length; j < COL; j++)
+                        {
+                            row.Add("");
+                        }
                     }
                     writer.WriteRow(row);
                 }

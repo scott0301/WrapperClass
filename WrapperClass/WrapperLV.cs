@@ -87,6 +87,22 @@ namespace WrapperUnion
 
             lv.EndUpdate();
         }
+        public static List<string> GetAllItems_ByIndex(ListView lv, int nIndex)
+        {
+            List<string> list = new List<string>();
+
+            int nCount = lv.Items.Count;
+
+            for (int i = 0; i < nCount; i++)
+            {
+                if (lv.Items[i].SubItems.Count >= nIndex)
+                {
+                    list.Add( lv.Items[i].SubItems[nIndex].Text);
+                }
+            }
+
+            return list;
+        }
         public static void DisplayData(ListView lv, string[] ListHeader, int [] listWidth, WrapperExcel excel)
         {
             int nColLength = excel.COL;
