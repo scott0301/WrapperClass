@@ -25,4 +25,3 @@ D:\Develope\Library\WrapperUnion.dll
 D:\Develope\Library\WrapperUnion.pdb
 D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperUnion.dll
 D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperUnion.pdb
-D:\Develope\WrapperClass\WrapperClass\obj\Debug\WrapperClass.csprojResolveAssemblyReference.cache

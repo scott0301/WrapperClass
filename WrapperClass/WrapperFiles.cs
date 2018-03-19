@@ -9,9 +9,21 @@ namespace WrapperUnion
 {
     public static partial class WrapperFile
     {
-        public static string GetFileName(string strPath){return Path.GetFileName(strPath);}
-        public static bool FileExist(string strPath){return File.Exists(strPath);}
-        public static string GetFileExt(string strPath){string strExt = Path.GetExtension(strPath).ToUpper();return strExt;}
+        public static bool/*****/isFileExist(string strPath){return File.Exists(strPath);}
+        public static string/***/GetFileExt(string strPath){string strExt = Path.GetExtension(strPath).ToUpper();return strExt;}
+        public static string/***/GetFileName(string strPath) { return Path.GetFileName(strPath); }
+        public static bool /****/isValidImageFile(string strPath)
+        {
+            string extension = GetFileExt(strPath).ToUpper();
+
+            bool bValid = false;
+
+            if (extension == ".BMP" || extension == "PNG" || extension == "JPG " || extension == "JPEG")
+            {
+                bValid = true;
+            }
+            return bValid;
+        }
     }
     //*********************************************************************************************
     // IO functions
@@ -516,18 +528,6 @@ namespace WrapperUnion
     public static partial class WrapperFile
     {
         // 171121 
-        public static bool isValidImageFile(string strPath)
-        {
-            string extension = GetFileExt(strPath).ToUpper();
-
-            bool bValid = false;
-
-            if (extension == ".BMP" || extension == "PNG" || extension == "JPG " || extension == "JPEG")
-            {
-                bValid = true;
-            }
-            return bValid;
-        }
         public static void EnsureFolderExsistance(string strPath) { CreateFolder(strPath); }
         public static bool IsDirectory(string strPath)
         {
@@ -603,7 +603,6 @@ namespace WrapperUnion
             }
             return null;
         }
-
         public static string GetFolderSize(string strPath)
         {
             //*****************************************************************************************
